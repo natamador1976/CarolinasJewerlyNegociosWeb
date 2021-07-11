@@ -1,0 +1,1 @@
+CREATE DATABASE `carolina_jewerly_db`;
