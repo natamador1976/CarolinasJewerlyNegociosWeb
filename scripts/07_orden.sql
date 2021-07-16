@@ -11,3 +11,8 @@ CREATE TABLE `carolina_jewerly_db`.`orden` (
     REFERENCES `carolina_jewerly_db`.`clientes` (`codigo_cliente`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
+
+    ALTER TABLE `carolina_jewerly_db`.`orden` 
+DROP PRIMARY KEY,
+ADD PRIMARY KEY (`cod_orden`);
+;
