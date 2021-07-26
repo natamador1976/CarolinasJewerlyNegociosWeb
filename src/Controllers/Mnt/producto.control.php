@@ -34,9 +34,9 @@ class producto extends PublicController{
             $data["mode"]=$_POST["mode"];
             $data["codigo_producto"]=$_POST["codigo_producto"];
             $data["token"]=$_POST["token"];
-            $this->verificarToken();
+            //$this->verificarToken();
 
-            if($data["token"] != $_SESSION["productos_xss_token"]){
+            /*if($data["token"] != $_SESSION["productos_xss_token"]){
                 $time=time();
               $token=md5("productos".$time);
               $_SESSION["productos_xss_token"]=$token;
@@ -46,48 +46,50 @@ class producto extends PublicController{
                 "index.php?page=mnt_productos",
                 "Algo sucedio mal intente de nuevo :("
             );
-            }
+            }*/
 
            if($data["mode"]!='DEL'){
                $data["nombre_producto"]=$_POST["nombre_producto"];
                $data["descripcion_producto"]=$_POST["descripcion_producto"];
                $data["precio"]=$_POST["precio"];
                $data["cantidad_stock"]=$_POST["cantidad_stock"];
-               $data["codigo_categoria"]=$_POST["codigo_categoria"];
                $data["codigo_tipo_producto"]=$_POST["codigo_tipo_producto"];
+               $data["codigo_categoria"]=$_POST["codigo_categoria"];
+               $uri_img=$_FILES["uri_img"];
            }
 
            switch($data["mode"]){
                case 'INS':
-                            $ruta="img_prd/".$_POST["codigo_producto"].'/'.$_FILES["uri_img"]["name"];
-                            $ToGo="img_prd/".$_POST["codigo_producto"].'/';
-                            if(move_uploaded_file($ruta, $_FILES["uri_img"]["tmp_name"])){
+                            $store_dir="../../img_pdr/";
+                            @mkdir($store_dir, 0777, true);
+
+                            $uri_img=$_FILES["uri_img"];
+                            $tmp_path=$uri_img["tmp_name"];
+                            $path=$store_dir.$uri_img["name"];
+                            $public_path="/".$uri_img["name"];
+                           
+                           
                                 $ok=\Dao\productos::AddProduct(
                                     $data["nombre_producto"],
-                                    $data["descripcion_produto"],
+                                    $data["descripcion_producto"],
                                     $data["precio"],
                                     $data["cantidad_stock"],
-                                    $data["codigo_categoria"],
                                     $data["codigo_tipo_producto"],
-                                    $ruta
+                                    $data["codigo_categoria"],
+                                    $public_path
                                 );
                                 if($ok){
                                     \Utilities\Site::redirectToWithMsg(
                                         "index.php?page=mnt_productos",
-                                        "Prodcuto agregado Exitosamente"
+                                        "Producto agregado Exitosamente"
                                     );
                                 }
-                            }else{
-                                \Utilities\Site::redirectToWithMsg(
-                                    "index.php?page=mnt_productos",
-                                    "Problema al guardar la imagen"
-                                );
-                            }
+                            
                             break;
                case 'UPD':
-                            $ruta="img_prd/".$_POST["codigo_producto"].'/'.$_FILES["uri_img"]["name"];
-                            $ToGo="img_prd/".$_POST["codigo_producto"].'/';
-                            if(move_uploaded_file($ruta, $_FILES["uri_img"]["tmp_name"])){
+                            $ruta="img_prd/".'/'.$_FILES["uri_img"]["name"];
+                            $ToGo="img_prd/".'/';
+                            if(move_uploaded_file($ToGo, $_FILES["uri_img"]["tmp_name"])){
                             $ok=\Dao\productos::UpdateProduct(
                                 $data["nombre_producto"],
                                 $data["descripcion_produto"],
@@ -130,7 +132,7 @@ class producto extends PublicController{
         }else{
             $data["mode"]=$_GET["mode"];
             $data["codigo_producto"]=isset($_GET["id"])?$_GET["id"]:0;
-            $this->verificarToken();
+            //$this->verificarToken();
 
         }
         //POSTBACK

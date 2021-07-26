@@ -12,7 +12,7 @@
         </div>
         <div class="row my-2 align-center">
             <label for="nombre_producto" class="col-12 col-m-3">Nombre del Producto</label>
-            <input  class="col-12 col-m-9" type="text" name="nombre_producto" id="nombre_producto" value="{{nombre_producto}}" {{readonly}} />
+             <input class="col-12 col-m-9" type="text" name="nombre_producto" id="nombre_producto" value="{{nombre_producto}}" {{readonly}} />
         </div>
         <div class="row my-2 align-center">
             <label for="descripcion_producto" class="col-12 col-m-3">Descripción del Producto</label>
@@ -28,18 +28,18 @@
         </div>
         <div class="row my-2 align-center">
             <label for="codigo_categoria" class="col-12 col-m-3">Categoría</label>
-           <select name="codigo_categoria" id="codigo_categoria" class="col-12 col-m-9" {{if readonly}} readonly disabled {{endif readonly}}>
+           <select name="codigo_categoria" id="codigo_categoria" class="col-12 col-m-9">
                {{foreach categorias}}
-               <option value="">Seleccione una Categoría</option>
+               <option >Seleccione una Categoría</option>
                <option value="{{codigo_categoria}}">{{nombre_categoria}}</option>
                {{endfor categorias}}
            </select>
         </div>
         <div class="row my-2 align-center">
             <label for="codigo_tipo_producto" class="col-12 col-m-3">Tipo de Producto</label>
-            <select name="codigo_tipo_producto" id="codigo_tipo_producto" class="col-12 col-m-9" {{if readonly}} readonly disabled {{endif readonly}}>
+            <select name="codigo_tipo_producto" id="codigo_tipo_producto" class="col-12 col-m-9" >
                {{foreach tipo_p}}
-               <option value="">Seleccione un tipo de producto</option>
+               <option >Seleccione un tipo de producto</option>
                <option value="{{codigo_tipo_producto}}">{{nombre_tipo_producto}}</option>
                {{endfor tipo_p}}
            </select>
