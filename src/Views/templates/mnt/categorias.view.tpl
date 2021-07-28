@@ -1,12 +1,12 @@
-<h1>Listado de Hero Items para el Index</h1>
-<section class="WWList container-m">
-<table>
+<h1>Listado de Categorias para el Index</h1>
+<section>
+<table class="table table-info table-striped">
   <thead>
     <tr>
           <th>#</th>
           <th>Categoria</th>
           <th class="hidden-s">Descripción</th>
-          <th><a href="index.php?page=mnt_categoria&mode=INS" class="button">+</a></th>
+          <th><a href="index.php?page=mnt_categoria&mode=INS" class="button"><i class="fas fa-plus"></i></a></th>
     </tr>
   </thead>
   <tbody>
@@ -16,9 +16,9 @@
       <td><a href="index.php?page=mnt_categoria&mode=DSP&id={{codigo_categoria}}">{{nombre_categoria}}</a></td>
       <td class="hidden-s">{{descripcion_categoria}}</td>
       <td class="center">
-        <a href="index.php?page=mnt_categoria&mode=UPD&id={{codigo_categoria}}">Editar</a>
+        <a href="index.php?page=mnt_categoria&mode=UPD&id={{codigo_categoria}}"><i class="far fa-edit"></i></a>
         &nbsp;
-        <a href="index.php?page=mnt_categoria&mode=DEL&id={{codigo_categoria}}">Eliminar</a>
+        <a href="index.php?page=mnt_categoria&mode=DEL&id={{codigo_categoria}}"><i class="far fa-trash-alt"></i></a>
       </td>
     </tr>
     {{endfor categorias}}

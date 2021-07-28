@@ -13,7 +13,7 @@
         }
 
         public static function getCategoriaById($id){
-            $query = "SELECT * FROM categorias WHERE codigo_categoria=:$id;";
+            $query = "SELECT * FROM categorias WHERE codigo_categoria=:id;";
             $parameters = array("id" => $id);
             $registro = self::obtenerUnRegistro($query,$parameters);
             return $registro;

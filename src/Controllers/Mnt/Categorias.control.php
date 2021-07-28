@@ -1,7 +1,7 @@
 <?php
     namespace Controllers\Mnt;
 
-    class Categorias extends \Controllers\PrivateController{
+    class Categorias extends \Controllers\PublicController{
 
         public function run():void{
             $viewData = array();
