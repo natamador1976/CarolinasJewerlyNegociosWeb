@@ -29,7 +29,7 @@ class Index extends PublicController
      */
     public function run() :void
     {
-        \Utilities\Site::addLink("public/css/heropanel.css");
+        \Utilities\Site::addLink("public/css/style.css");
         \Views\Renderer::render("index", array("page"=>$this->toString()));
     }
 }

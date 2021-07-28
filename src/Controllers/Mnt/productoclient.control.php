@@ -17,6 +17,8 @@ class productoclient extends PublicController{
         $token=md5("productos",$time);
         $_SESSION["productos_xss_token"]=$token;
         $_SESSION["productos_xss_token_tts"]=$time; 
+        
+        
 
         \Views\Renderer::render("mnt/productoclient",$data);
 

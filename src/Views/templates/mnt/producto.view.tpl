@@ -26,28 +26,28 @@
             <label for="cantidad_stock" class="col-12 col-m-3">Stock</label>
             <input class="col-12 col-m-9" type="text" name="cantidad_stock" id="cantidad_stock" value="{{cantidad_stock}}" />
         </div>
-        <div class="row my-2 align-center">
-            <label for="codigo_categoria" class="col-12 col-m-3">Categoría</label>
-           <select name="codigo_categoria" id="codigo_categoria" class="col-12 col-m-9">
-               {{foreach categorias}}
-               <option >Seleccione una Categoría</option>
-               <option value="{{codigo_categoria}}">{{nombre_categoria}}</option>
-               {{endfor categorias}}
-           </select>
-        </div>
+
         <div class="row my-2 align-center">
             <label for="codigo_tipo_producto" class="col-12 col-m-3">Tipo de Producto</label>
             <select name="codigo_tipo_producto" id="codigo_tipo_producto" class="col-12 col-m-9" >
                {{foreach tipo_p}}
-               <option >Seleccione un tipo de producto</option>
                <option value="{{codigo_tipo_producto}}">{{nombre_tipo_producto}}</option>
                {{endfor tipo_p}}
            </select>
         </div>
+        <div class="row my-2 align-center">
+            <label for="codigo_categoria" class="col-12 col-m-3">Categoría</label>
+           <select name="codigo_categoria" id="codigo_categoria" class="col-12 col-m-9">
+               {{foreach categorias}}
+               <option value="{{codigo_categoria}}">{{nombre_categoria}}</option>
+               {{endfor categorias}}
+           </select>
+        </div>
+        
 
         <div class="row my-2 align-center">
              <label for="uri_img" class="col-12 col-m-3">Imagen</label>
-             <input type="file" name="uri_img" id="uri_img"/>
+             <input type="file" name="uri_img" id="uri_img" value="uri_img" />
 
         </div>
         <div class="row my-4 align-center flex-end">

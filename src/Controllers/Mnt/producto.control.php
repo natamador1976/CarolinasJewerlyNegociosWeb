@@ -49,26 +49,27 @@ class producto extends PublicController{
             }*/
 
            if($data["mode"]!='DEL'){
+               $store_dir="img_pdr/";
                $data["nombre_producto"]=$_POST["nombre_producto"];
                $data["descripcion_producto"]=$_POST["descripcion_producto"];
                $data["precio"]=$_POST["precio"];
                $data["cantidad_stock"]=$_POST["cantidad_stock"];
                $data["codigo_tipo_producto"]=$_POST["codigo_tipo_producto"];
                $data["codigo_categoria"]=$_POST["codigo_categoria"];
-               $uri_img=$_FILES["uri_img"];
+               $uri_img=$_POST["uri_img"];
            }
 
            switch($data["mode"]){
                case 'INS':
-                            $store_dir="../../img_pdr/";
-                            @mkdir($store_dir, 0777, true);
+                            $store_dir="img_pdr/";
+                            
 
                             $uri_img=$_FILES["uri_img"];
                             $tmp_path=$uri_img["tmp_name"];
                             $path=$store_dir.$uri_img["name"];
-                            $public_path="/".$uri_img["name"];
+                            $public_path=$store_dir.$uri_img["name"];
                            
-                           
+                           if(move_uploaded_file($tmp_path, $path)){
                                 $ok=\Dao\productos::AddProduct(
                                     $data["nombre_producto"],
                                     $data["descripcion_producto"],
@@ -84,32 +85,47 @@ class producto extends PublicController{
                                         "Producto agregado Exitosamente"
                                     );
                                 }
+                            } 
+                            else{
+                                \Utilities\Site::redirectToWithMsg(
+                                    "index.php?page=mnt_productos",
+                                    "No se puede agregar la imagen"
+                                );
+                            }
                             
                             break;
                case 'UPD':
-                            $ruta="img_prd/".'/'.$_FILES["uri_img"]["name"];
-                            $ToGo="img_prd/".'/';
-                            if(move_uploaded_file($ToGo, $_FILES["uri_img"]["tmp_name"])){
-                            $ok=\Dao\productos::UpdateProduct(
-                                $data["nombre_producto"],
-                                $data["descripcion_produto"],
-                                $data["precio"],
-                                $data["cantidad_stock"],
-                                $data["codigo_categoria"],
-                                $data["codigo_tipo_producto"],
-                                $ruta,
-                                $data["codigo_producto"]
-                            );
-                            if($ok){
-                                \Utilities\Site::redirectToWithMsg(
-                                    "index.php?page=mnt_productos",
-                                    "Productto modificado Exitosamente"
+                            $store_dir="img_pdr/";
+                                        
+
+                            $uri_img=$_FILES["uri_img"];
+                            $tmp_path=$uri_img["tmp_name"];
+                            $path=$store_dir.$uri_img["name"];
+                            $public_path=$store_dir.$uri_img["name"];
+                        
+                        if(move_uploaded_file($tmp_path, $path)){
+                                $ok=\Dao\productos::UpdateProduct(
+                                    $data["nombre_producto"],
+                                    $data["descripcion_producto"],
+                                    $data["precio"],
+                                    $data["cantidad_stock"],
+                                    $data["codigo_tipo_producto"],
+                                    $data["codigo_categoria"],
+                                    $public_path,
+                                    $data["codigo_producto"]
                                 );
-                            }
-                            }else{
+
+                                if($ok){
+                                    \Utilities\Site::redirectToWithMsg(
+                                        "index.php?page=mnt_productos",
+                                        "Producto agregado Exitosamente"
+                                    );
+                                }
+                            } 
+                            else{
                                 \Utilities\Site::redirectToWithMsg(
                                     "index.php?page=mnt_productos",
-                                    "Problema al guardar la imagen"
+                                    "No se puede agregar la imagen"
                                 );
                             }
 
@@ -140,11 +156,12 @@ class producto extends PublicController{
         //visualizar datos
         if($data["mode"]=="INS"){
             $data["ModalTitle"]="Agregando nuevo producto";
-
             $data["categorias"]=\Dao\Categorias::getAllCategorias();
             $data["tipo_p"]=\Dao\productos::getTipo();
         
         }else{
+            $data["categorias"]=\Dao\Categorias::getAllCategorias();
+            $data["tipo_p"]=\Dao\productos::getTipo();
             $productoId=\Dao\productos::getProductId($data["codigo_producto"]);
             if(!$productoId){
                 \Utilities\Site::redirectToWithMsg(
@@ -152,9 +169,9 @@ class producto extends PublicController{
                     "No existe el registro"
                   );}
                   \Utilities\ArrUtils::mergeFullArrayTo($productoId, $data);
-                  if($data["mode"]=="DEL" || $data["Mode"]="DSP"){
+                  if($data["mode"]=="DEL" || $data["mode"]="DSP"){
                       $data["readonly"]="readonly";
-                      $data["showCommitBtn"]=$data["mode"]=="DEL";
+                      $data["showCommitBtn"]= $data["mode"]=="DEL";
                   }
         }
         \Views\Renderer::render("mnt\producto",$data);

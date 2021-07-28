@@ -2,6 +2,9 @@
 
 namespace Utilities;
 
+
+
+
 class Site
 {
     public static function configure()
@@ -9,6 +12,7 @@ class Site
         $donenv = new \Utilities\DotEnv("parameters.env");
         \Utilities\Context::setArrayToContext($donenv->load());
         date_default_timezone_set(\Utilities\Context::getContextByKey("TIMEZONE"));
+        Carrito::carrito();
     }
     public static function getPageRequest()
     {
