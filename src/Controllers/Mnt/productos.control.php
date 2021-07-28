@@ -19,8 +19,6 @@ class productos extends PublicController{
         $_SESSION["productos_xss_token_tts"]=$time; 
 
         \Views\Renderer::render("mnt/productos",$data);
-
-        
     }
 }
 ?>

@@ -12,9 +12,8 @@
 
         public static function getProductId($id){
             $query = "SELECT * FROM productos WHERE codigo_producto=:id;";
-            $parameters = array("id" => $id);
-            $registro = self::obtenerUnRegistro($query,$parameters);
-            return $registro;
+            $parameters = array("id" => $id);  
+            return self::obtenerUnRegistro($query,$parameters);
         }
 
        public static function AddProduct($nombre_producto, $descripcion_producto, $precio, $cantidad_stock, $codigo_tipo_producto, $codigo_categorias, $uri_img){
@@ -36,7 +35,7 @@
             :codigo_tipo_producto,
             :codigo_categoria,
             :uri_img);";
-            $parameters=array(
+            $parameters = array(
                 "nombre_producto"=>$nombre_producto,
                 "descripcion_producto"=>$descripcion_producto,
                 "precio"=>$precio, 

@@ -28,7 +28,11 @@
         </div>
         <div class="row my-2 align-center">
             <label for="codigo_categoria" class="col-12 col-m-3">Categoría</label>
+<<<<<<< Updated upstream
            <select name="codigo_categoria" id="codigo_categoria" class="col-12 col-m-9">
+=======
+           <select name="codigo_categoria" id="codigo_categoria" class="col-12 col-m-9" >
+>>>>>>> Stashed changes
                {{foreach categorias}}
                <option >Seleccione una Categoría</option>
                <option value="{{codigo_categoria}}">{{nombre_categoria}}</option>
@@ -37,7 +41,11 @@
         </div>
         <div class="row my-2 align-center">
             <label for="codigo_tipo_producto" class="col-12 col-m-3">Tipo de Producto</label>
+<<<<<<< Updated upstream
             <select name="codigo_tipo_producto" id="codigo_tipo_producto" class="col-12 col-m-9" >
+=======
+            <select name="codigo_tipo_producto" id="codigo_tipo_producto" class="col-12 col-m-9">
+>>>>>>> Stashed changes
                {{foreach tipo_p}}
                <option >Seleccione un tipo de producto</option>
                <option value="{{codigo_tipo_producto}}">{{nombre_tipo_producto}}</option>
