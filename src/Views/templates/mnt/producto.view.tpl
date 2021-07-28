@@ -29,7 +29,11 @@
 
         <div class="row my-2 align-center">
             <label for="codigo_tipo_producto" class="col-12 col-m-3">Tipo de Producto</label>
+<<<<<<< Updated upstream
             <select name="codigo_tipo_producto" id="codigo_tipo_producto" class="col-12 col-m-9" >
+=======
+            <select name="codigo_tipo_producto" id="codigo_tipo_producto" class="col-12 col-m-9">
+>>>>>>> Stashed changes
                {{foreach tipo_p}}
                <option value="{{codigo_tipo_producto}}">{{nombre_tipo_producto}}</option>
                {{endfor tipo_p}}
