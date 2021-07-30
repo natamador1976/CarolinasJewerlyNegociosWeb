@@ -1,5 +1,5 @@
 <h1>Listado de Categorias para el Index</h1>
-<section>
+<section class="m-4">
 <table class="table table-info table-striped">
   <thead>
     <tr>

@@ -7,7 +7,7 @@
             <label for="codigo_producto" class="col-12 col-m-3">Código</label>
             <input type="text" name="codigo_producto" id="codigo_producto" value="{{codigo_producto}}"readonly disabled />
             <input type="hidden" name="mode" value="{{mode}}"/>
-            <input type="hidden" name="codigo_producto" id="token " value="{{codigo_producto}}"/>
+            <input type="hidden" name="codigo_producto" value="{{codigo_producto}}"/>
             <input type="hidden" name="token"id="token" value="{{productos_xss_token}}">
         </div>
         <div class="row my-2 align-center">
@@ -29,11 +29,7 @@
 
         <div class="row my-2 align-center">
             <label for="codigo_tipo_producto" class="col-12 col-m-3">Tipo de Producto</label>
-<<<<<<< Updated upstream
-            <select name="codigo_tipo_producto" id="codigo_tipo_producto" class="col-12 col-m-9" >
-=======
             <select name="codigo_tipo_producto" id="codigo_tipo_producto" class="col-12 col-m-9">
->>>>>>> Stashed changes
                {{foreach tipo_p}}
                <option value="{{codigo_tipo_producto}}">{{nombre_tipo_producto}}</option>
                {{endfor tipo_p}}

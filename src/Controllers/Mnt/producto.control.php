@@ -34,9 +34,9 @@ class producto extends PublicController{
             $data["mode"]=$_POST["mode"];
             $data["codigo_producto"]=$_POST["codigo_producto"];
             $data["token"]=$_POST["token"];
-            //$this->verificarToken();
+            $this->verificarToken();
 
-            /*if($data["token"] != $_SESSION["productos_xss_token"]){
+            if($data["token"] != $_SESSION["productos_xss_token"]){
                 $time=time();
               $token=md5("productos".$time);
               $_SESSION["productos_xss_token"]=$token;
@@ -46,7 +46,7 @@ class producto extends PublicController{
                 "index.php?page=mnt_productos",
                 "Algo sucedio mal intente de nuevo :("
             );
-            }*/
+            }
 
            if($data["mode"]!='DEL'){
                $store_dir="img_pdr/";
@@ -56,13 +56,13 @@ class producto extends PublicController{
                $data["cantidad_stock"]=$_POST["cantidad_stock"];
                $data["codigo_tipo_producto"]=$_POST["codigo_tipo_producto"];
                $data["codigo_categoria"]=$_POST["codigo_categoria"];
-               $uri_img=$_POST["uri_img"];
+               $uri_img=$_FILES["uri_img"];
            }
 
            switch($data["mode"]){
                case 'INS':
                             $store_dir="img_pdr/";
-                            
+                            @mkdir($store_dir,0777, true);
 
                             $uri_img=$_FILES["uri_img"];
                             $tmp_path=$uri_img["tmp_name"];
@@ -148,7 +148,7 @@ class producto extends PublicController{
         }else{
             $data["mode"]=$_GET["mode"];
             $data["codigo_producto"]=isset($_GET["id"])?$_GET["id"]:0;
-            //$this->verificarToken();
+            $this->verificarToken();
 
         }
         //POSTBACK
@@ -169,7 +169,7 @@ class producto extends PublicController{
                     "No existe el registro"
                   );}
                   \Utilities\ArrUtils::mergeFullArrayTo($productoId, $data);
-                  if($data["mode"]=="DEL" || $data["mode"]="DSP"){
+                  if($data["mode"]=="DEL" || $data["mode"]=="DSP"){
                       $data["readonly"]="readonly";
                       $data["showCommitBtn"]= $data["mode"]=="DEL";
                   }

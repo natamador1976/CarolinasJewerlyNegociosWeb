@@ -33,7 +33,7 @@
           <a class="nav-link" href="#">Conocenos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i> 
+          <a class="nav-link" href="index.php?page=mnt_carrito"><i class="fas fa-shopping-cart"></i> 
          <span class="badge badge-dark text-dark">{{CARKEY}}</span>
           </a>
         </li>
@@ -64,11 +64,12 @@
       </ul>
       <ul>
          <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="index.php?page=sec_login" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Inicio Sesión
+          <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-user-circle"><span>Usuario</span></i>
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdoswn">
             <li><a class="dropdown-item" href="index.php?page=sec_register">Crear Cuenta</a></li>
+            <li><a class="dropdown-item" href="index.php?page=sec_login">Inicio Sesión</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Cerrar Sesión</a></li>
           </ul>
