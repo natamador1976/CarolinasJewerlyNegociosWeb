@@ -22,7 +22,7 @@
         }
         
         public static function AddCartDetail($codigo_producto, $cantidad, $precio){
-            $codigo_carrito=\Dao\carrito::getCarritoId();
+      
             $query="INSERT INTO `carolina_jewerly_db`.`carrito_detalle`
             (
             `codigo_carrito`,
@@ -31,12 +31,11 @@
             `precio`)
             VALUES
             (
-            (select max(codigo_carrito) from carrito where estado='ACT'),
+            (select max(codigo_carrito) from carrito),
             :codigo_producto_c,
             :cantidad,
             :precio);";
             $parameters=array(
-                "codigo_carrito"=>$codigo_carrito,
                 "codigo_producto_c"=>$codigo_producto,
                 "cantidad"=>$cantidad,
                 "precio"=>$precio
@@ -71,13 +70,14 @@
 
         public static function getAllShopChart(){
             $query="SELECT * FROM carrito as A
-            join carrito_detalle as B; ";
+            join carrito_detalle as B
+            join productos as C on B.codigo_producto_c= C.codigo_producto ";
                     return self::obtenerRegistros($query, array());
         }
 
         public static function getCarritoId(){
             $query="SELECT max(codigo_carrito) as codigo_carrito from carrito where estado='ACT';";
-            self::obtenerRegistros($query, array());
+            return self::obtenerRegistros($query, array());
         }
 
         public static function StockProduct($codigo_producto){

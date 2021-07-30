@@ -2,25 +2,40 @@
 
 <section class="d-flex flex-row m-5 flex-wrap justify-content-around ">
      
-    <div class="column col-sm-6 card">
-         
-            <div class="card d-flex m-2">
-                 {{foreach cart}} 
-                <img src="{{uri_img}}" alt="{{nombre_producto}}" class="card-img-top img-fluid">
-                <div class="card-body d-flex justify-content-around">
-                    <h4 class="card-title" name="nombre_producto" value="{{nombre_producto}}">{{nombre_producto}}</h4>
-                    <p class="card-text" name="descripcion_producto" value="{{descripcion_producto}}">{{descripcion_producto}}</p>
-                    <div>
-                        <input type="text" name="cantidad" />
-                        <a href=""><i class="far fa-edit m-2" style="color:#F8485E; font-size:24px;"></i></a>
+    <div>
+         <table class="table table-light">
+             <thead>
+                 <tr>
+                     <th>#</th>
+                     <th>Producto</th>
+                     <th>Código</th>
+                     <th>Nombre</th>
+                     <th>Precio</th>
+                     <th>Cantidad</th>
+                     <th></th>
+
+                 </tr>
+             </thead>
+             <tbody>
+                 {{foreach cart}}
+                 <tr>
+                     <td>{{row}}</td>
+                     <td><img src="{{uri_img}}" alt="{{nombre_producto}} " style="width: 100px; height:100px;"/></td>
+                     <td>{{codigo_producto_c}}</td>
+                     <td>{{nombre_producto}}</td>
+                     <td>{{precio}}</td>
+                     <td>{{cantidad}}</td>
+                     <td>
                         <a href=""><i class="far fa-trash-alt m-2" style="color:#F8485E; font-size:24px;"></i></a>
-                    </div>
-                </div>
-                     {{ endfor cart}}
-            </div>
+                     </td>
+                 </tr>
+                 {{endfor cart}}
+             </tbody>
+         </table>
            
      
     </div>
+
  
     <!--Pago-->
     <div class="column col-sm-6 w-25">
