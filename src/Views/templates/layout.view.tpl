@@ -49,23 +49,14 @@
           </ul>
         </li>
 
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Administración
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-           <li><a class="dropdown-item" href="index.php?page=mnt_productos">Productos</a></li>
-            <li><a class="dropdown-item" href="index.php?page=mnt_categorias">Categorias</a></li>
-            <li><a class="dropdown-item" href="#">Empleados</a></li>
-            
-          </ul>
-        </li>
+        
         
       </ul>
       <ul>
          <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="fas fa-user-circle"><span>Usuario</span></i>
+            <i class="fas fa-user-circle"><span>Usuario
+            </span></i>
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdoswn">
             <li><a class="dropdown-item" href="index.php?page=sec_register">Crear Cuenta</a></li>

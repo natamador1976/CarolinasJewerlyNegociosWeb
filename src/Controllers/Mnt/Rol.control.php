@@ -5,6 +5,7 @@ use Controllers\PublicController;
 
     class Rol extends PublicController{
         public function run():void{
+            \Utilities\Site::addLink("public/css/style.css");
             $data=array();
             $ModalTitle=array(
                 "INS"=>"Nuevo Hero Panel",
@@ -13,9 +14,11 @@ use Controllers\PublicController;
                 "DEL"=>"Eliminaod %s - %s"
             );
             $data["ModalTitle"]="";
-            $data["codigo_rol"]=0;
+            $data["codigo_rol"]="";
             $data["descripcion_rol"]="";
             $data["estado"]="";
+            $data["estado_act"]=true;
+            $data["estado_ina"]=false;
             $data["showCommitBtn"]=true;
             $data["readonly"]="";
 
@@ -23,7 +26,7 @@ use Controllers\PublicController;
                 $data["mode"]=$_POST["mode"];
                 $data["codigo_rol"]=$_POST["codigo_rol"];
                 $data["token"]=$_POST["token"];
-                //$this->verificarToken();
+                $this->verificarToken();
                 if($data["token"] != $_SESSION["roles_xss_token"]){
                     $time=time();
                     $token=md5("roles".$time);
@@ -35,8 +38,9 @@ use Controllers\PublicController;
                     );
                 }
                 if($data["mode"]!='DEL'){
+                    $data["codigo_rol"]=$_POST["codigo_rol"];
                     $data["descripcion_rol"]=$_POST["descripcion_rol"];
-                    $data["estado"]=$_POST["descripcion_rol"];
+                    $data["estado"]=$_POST["estado"];
                 }
                 switch($data["mode"]){
                     case 'INS': 
@@ -79,7 +83,7 @@ use Controllers\PublicController;
             }else{
                 $data["mode"]=$_GET["mode"];
                 $data["codigo_rol"]=isset($_GET["id"])?$_GET["id"]:0;
-                //$this->verificarToken();   
+                $this->verificarToken();   
 
             }
             //Fin IsPostBack
@@ -97,13 +101,15 @@ use Controllers\PublicController;
                     
                 }
                 \Utilities\ArrUtils::mergeFullArrayTo($rolId, $data);
+                $data["estado_act"]=$data["estado"]=='ACT';
+                $data["estado_ina"]=$data["estado"]=='INA';
                 if($data["mode"]=='DEL' || $data["mode"]=='DSP'){
                     $data["readonly"]="readonly";
                     $data["showCommitBtn"]= $data["mode"]=="DEL";
                 }
 
             }
-            \Views\Renderer::render("mnt\rol", $data);
+            \Views\Renderer::render("mnt/rol", $data);
         }
         private function verificarToken(){
             if(!isset($_SESSION["roles_xss_token"])){

@@ -68,9 +68,11 @@
                       <input   type="radio" name="btnPaypal" id="btnPaypal"/><span class=""><i class="fab fa-cc-paypal " style="font-size:50px;"></i></span>
                    </div>
                </div>
+               <form action="index.php?page=mnt_carrito">
                <div class="d-flex justify-content-center ">
                    <button type="submit" name="btnPagar"  id="btnPagar" class="btn btn-outline-warning w-25 mt-3 mb-3">Pagar</button>
                </div>
+               </form>
             </form>
             
         </div>

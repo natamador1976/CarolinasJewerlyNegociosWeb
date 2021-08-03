@@ -62,8 +62,23 @@
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="index.php?page=mnt_productos">Productos</a></li>
             <li><a class="dropdown-item" href="index.php?page=mnt_categorias">Categorias</a></li>
-            <li><a class="dropdown-item" href="#">Clientes</a></li>
-            <li><a class="dropdown-item" href="#">Empleados</a></li>
+            <li><a class="dropdown-item" href="index.php?page=mnt_TipoP">Tipo de Productos</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="index.php?page=mnt_clientes">Clientes</a></li>
+            <li><a class="dropdown-item" href="index.php?page=mnt_empleados">Empleados</a></li>
+            
+          </ul>
+        </li>
+        
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Acceso
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+           <li><a class="dropdown-item" href="index.php?page=mnt_productos">Usuarios</a></li>
+            <li><a class="dropdown-item" href="index.php?page=mnt_roles">Roles</a></li>
+            <li><a class="dropdown-item" href="#">Permisos</a></li>
             
           </ul>
         </li>
@@ -72,10 +87,13 @@
       <ul>
          <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="fas fa-user-circle"><span class="text-dark">Usuario
+            
               {{with login}}
                 {{userName}}
              {{endwith login}}
+             {{ifnot login}}
+             Usuario
+             {{endifnot login}}
             
             </span></i>
           </a>
