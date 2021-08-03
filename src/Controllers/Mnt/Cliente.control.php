@@ -3,6 +3,7 @@ namespace Controllers\Mnt;
 
 class Cliente extends \Controllers\PublicController{
     public function run():void {
+       
         $Data = array();
         $ModalTitle=array(
             "INS"=>"Nuevo Cliente",

@@ -11,7 +11,7 @@
             foreach($tmpClientes as $clientes){
                 $counter ++;
                 $clientes["rownum"] = $counter;
-                $clientes["nombre_ciente"] = str_replace(array("<",">"), array("&lt;","&gt"), $clientes["nombre_ciente"]);
+                
                 $Data["clientes"][]=$clientes;
             }
           

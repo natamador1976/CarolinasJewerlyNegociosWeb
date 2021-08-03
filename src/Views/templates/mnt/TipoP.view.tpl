@@ -1,5 +1,5 @@
 <h1>Listado de Tipos de Productos</h1>
-<section class="m-3">
+<section class="container-md mt-4" style="height: 100vh;">
 <table class="table table-info table-striped">
     <thead>
         <tr>
@@ -21,7 +21,7 @@
                <a href="index.php?page=mnt_TipoProducto&mode=DEL&id={{codigo_tipo_producto}}"><i class="far fa-trash-alt"></i></a>
             </td>
         </tr>
-        {{enfor tipo_producto}}
+        {{endfor tipo_producto}}
     </tbody>
 </table>
 </section>
