@@ -9,9 +9,9 @@ class TipoP extends PublicController{
         
         $data=array();
         $data["tipo_producto"]=array();
-        $Tmp=\Dao\TipoP::getAllTipoP();
+        $tmp=\Dao\TipoP::getAllTipoP();
 
-        foreach($Tmp as $item){
+        foreach($tmp as $item){
             $data["tipo_producto"][]=$item;
         }
        

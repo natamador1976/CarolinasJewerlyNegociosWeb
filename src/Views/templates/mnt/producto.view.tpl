@@ -47,7 +47,7 @@
 
         <div class="row my-2 align-center">
              <label for="uri_img" class="col-12 col-m-3">Imagen</label>
-             <input type="file" name="uri_img" id="uri_img" value="uri_img" />
+             <input type="file" name="uri_img" id="uri_img" value="{{uri_img}}" />
 
         </div>
         <div class="row my-4 align-center flex-end">

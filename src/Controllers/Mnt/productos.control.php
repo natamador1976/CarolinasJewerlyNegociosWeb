@@ -1,14 +1,18 @@
 <?php
     namespace Controllers\Mnt;
 
-use Controllers\PublicController;
 
-class productos extends PublicController{
+
+class productos extends \Controllers\PrivateController{
     public function run():void{
-        
-        $data=array();
-        $data["productos"]=array();
+        $data=array(); 
+        $data["CanInsert"]=self::isFeatureAutorized("Controllers\Mnt\Productos\New");
+        $data["CanUpdate"]=self::isFeatureAutorized("Controllers\Mnt\Productos\Upd");
+        $data["CanDelete"]=self::isFeatureAutorized("Controllers\Mnt\Productos\Del");
+        $data["CanView"]=self::isFeatureAutorized("Controllers\Mnt\Productos\View");
         $tmp=\Dao\productos::getAllProductos();
+        $data["productos"]=array();
+       
         foreach($tmp as $tmpitems){
             $data["productos"][]=$tmpitems;
         }

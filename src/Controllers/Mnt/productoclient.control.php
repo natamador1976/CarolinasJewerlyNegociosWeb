@@ -30,12 +30,20 @@ class productoclient extends PublicController{
        
         
         if(isset($_POST["btnComprar"])){
-        
+            $values=array();
            $estado=\Dao\carrito::getCarritoId();    
+           $tmpProducto=\Dao\carrito::StockProduct($_POST["codigo_producto"]);
+           print_r( $tmpProducto);
+          if(intval($_POST["cantidad"])>intval($tmpProducto["cantidad_stock"])){
+              echo '<script>alert("Se Inserto a la carretilla")</script>';
+          }else{
+            echo '<script>alert("Se loco a la carretilla")</script>';
+          }
+/*
            if($estado==null){
                $Cart=\Dao\carrito::AddCart();
                $Detail=\Dao\carrito::AddCartDetail(
-                   $registros["codigo_producto"]=$_POST["codigo_producto"],
+                   $registros["codigo_producto"]=$data["codigo_producto"],
                    $registros["cantidad"]=$_POST["cantidad"],
                    $registros["precio"]=$_POST["precio"]
                );
@@ -52,12 +60,14 @@ class productoclient extends PublicController{
             if($Detail){
                 echo '<script>alert("Se Inserto a la carretilla")</script>';
             }
-           }
+           }*/
            
               
 
         
         }
+
+      
         
 
         \Views\Renderer::render("mnt/productoclient",$data);

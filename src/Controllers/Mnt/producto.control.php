@@ -1,11 +1,15 @@
 <?php
     namespace Controllers\Mnt;
 
-use Controllers\PublicController;
+use Controllers\PrivateController;
 
-class producto extends PublicController{
+class producto extends PrivateController{
     public function run():void{
         \Utilities\Site::addLink("public/css/style.css");
+        $data["CanInsert"]=self::isFeatureAutorized("Controllers\Mnt\producto\New");
+        $data["CanUpdate"]=self::isFeatureAutorized("Controllers\producto\Store\Upd");
+        $data["CanDelete"]=self::isFeatureAutorized("Controllers\producto\Store\Del");
+       $data["CanView"]=self::isFeatureAutorized("Controllers\producto\Store\View");
 
         $data=array();
 
@@ -58,6 +62,7 @@ class producto extends PublicController{
                $data["codigo_categoria"]=$_POST["codigo_categoria"];
                $uri_img=$_FILES["uri_img"];
            }
+          
 
            switch($data["mode"]){
                case 'INS':
