@@ -54,8 +54,8 @@
             Administración
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Productos</a></li>
-            <li><a class="dropdown-item" href="#">Clientes</a></li>
+           <li><a class="dropdown-item" href="index.php?page=mnt_productos">Productos</a></li>
+            <li><a class="dropdown-item" href="index.php?page=mnt_categorias">Categorias</a></li>
             <li><a class="dropdown-item" href="#">Empleados</a></li>
             
           </ul>

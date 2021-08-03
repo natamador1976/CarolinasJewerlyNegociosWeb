@@ -159,7 +159,7 @@ class Security extends \Dao\Table
     static public function getFeatureByUsuario($userCod, $fncod)
     {
         $sqlstr = "select * from
-        funciones_roles a inner join roles_usuarios b on a.codigo_rol = b.codigo_rol
+        funciones_roles a inner join roles_usuarios b on a.codigorol = b.codigo_rol
         where a.funcion_rol_estado = 'ACT' and b.rol_estado='ACT' and b.codusuario=:usercod
         and a.codigo_funcion=:fncod limit 1;";
         $resultados = self::obtenerRegistros(
@@ -177,6 +177,33 @@ class Security extends \Dao\Table
         $sqlstr = "SELECT * from roles where codigo_rol=:codigo_rol;";
         $featuresList = self::obtenerRegistros($sqlstr, array("codigo_rol" => $rolescod));
         return count($featuresList) > 0;
+    }
+
+    static public function getRolById($codigo_rol){
+        $query="SELECT * from roles where codigo_rol=:codigo_rol;";
+       $parameters=array("codigo_rol" => $codigo_rol);
+       return self::obtenerUnRegistro($query, $parameters);
+
+    }
+    static public function getRoles(){
+        $sqlstr = "SELECT * from roles ";
+        return self::obtenerRegistros($sqlstr,array());
+    }
+    static public function modificarRol($descripcion, $estado, $codigo_rol){
+        $sql="Update roles set descripcion_rol=:deescripcion, estado=:estado where codigo_rol=:codigo_rol";
+        $parameters=array(
+            "descripcion"=>$descripcion, 
+            "estado"=>$estado, 
+            "codigo_rol"=>$codigo_rol
+        );
+        return self::executeNonQuery($sql, $parameters);
+
+    }
+
+    static public function DeleteRol($codigo_rol){
+        $query="DELETE FROM roles where codigo_rol=:codigo_rol";
+        $parameters=array("codigo_rol"=>$codigo_rol);
+        return self::executeNonQuery($query, $parameters);
     }
 
     static public function addNewRol($rolescod, $rolesdsc, $rolesest)
@@ -222,7 +249,7 @@ class Security extends \Dao\Table
     static public function removeFeatureFromRol($fncod, $rolescod)
     {
         $sqldel = "UPDATE funciones_roles set funcion_rol_estado='INA'
-        where codigo_funcion=:fncod and codigo_rol=:rolescod;";
+        where codigo_funcion=:fncod and codigorol=:rolescod;";
         return self::executeNonQuery(
             $sqldel,
             array("fncod" => $fncod, "rolescod" => $rolescod)

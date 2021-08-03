@@ -1,17 +1,18 @@
 <h1 > <span><i class="fas fa-shopping-cart"></i> </span> Carrito de Compras</h1>
 
-<section class="d-flex flex-row m-5 flex-wrap justify-content-around ">
-     
-    <div>
-         <table class="table table-light">
+<section class="d-flex flex-row m-5 flex-wrap justify-content-around " style="height: 100vh;">
+    
+    <div class="">
+         <table class="table table-light" style="width: 1000px; ">
              <thead>
                  <tr>
-                     <th>#</th>
+                     
                      <th>Producto</th>
                      <th>Código</th>
                      <th>Nombre</th>
                      <th>Precio</th>
                      <th>Cantidad</th>
+                     <th>Subtotal</th>
                      <th></th>
 
                  </tr>
@@ -19,15 +20,21 @@
              <tbody>
                  {{foreach cart}}
                  <tr>
-                     <td>{{row}}</td>
+                     
                      <td><img src="{{uri_img}}" alt="{{nombre_producto}} " style="width: 100px; height:100px;"/></td>
                      <td>{{codigo_producto_c}}</td>
                      <td>{{nombre_producto}}</td>
                      <td>{{precio}}</td>
                      <td>{{cantidad}}</td>
+                     <td>{{subtotal}}</td>
+                    
                      <td>
-                        <a href=""><i class="far fa-trash-alt m-2" style="color:#F8485E; font-size:24px;"></i></a>
+                        <form action="index.php?page=mnt_carrito" method="POST">
+                            <input type="hidden" value="{{codigo_producto_c}}" name="codigo_producto_c"/>
+                        <button name="BtnDelete" onclick="" id="BtnDelete" type="submit" class="btn btn-light shadow-md"><i class="far fa-trash-alt m-2" style="color:#F8485E; font-size:24px;"></i></button>
+                       </form>
                      </td>
+                     
                  </tr>
                  {{endfor cart}}
              </tbody>
@@ -35,25 +42,25 @@
            
      
     </div>
-
+   
  
     <!--Pago-->
-    <div class="column col-sm-6 w-25">
+    <div class=" ">
         
-        <div class="card">
+        <div class="card" style="width: 400px;">
             <h2 class="text-center m-3"> Pago</h2>
             <form action="" method="POST">
                <div class="m-3">
                     <label for="txtSubtotal">Subtotal</label>
-                    <input class="m-2 " type="text" value="1234.90" readonly disabled/>
+                    <input class="m-2 " type="text" value="{{suma}}" readonly disabled/>
                </div>
                <div class="m-3">
                     <label for="txtImpuesto">Impuesto</label>
-                    <input class="m-2 " type="text" value="1234.90" readonly disabled/>
+                    <input class="m-2 " type="text" value="{{isv}}" readonly disabled/>
                </div>
                <div class="m-3">
                     <label for="txtTotal">Total</label>
-                    <input class="m-2 " type="text" value="1234.90" readonly disabled/>
+                    <input class="m-2 " type="text" value="{{total}}" readonly disabled/>
                </div>
                <div >
                    <h3 class="text-center">Método de Pago</h3>
@@ -67,7 +74,6 @@
             </form>
             
         </div>
-       
     </div>
 
 </section>

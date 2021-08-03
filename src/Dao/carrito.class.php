@@ -58,20 +58,19 @@
                 return self::executeNonQuery($query, $parameters);
         }
 
-        public static function Deleteproducto($codigo_producto, $codigo_carrito){
-            $query="DELETE from carrito_detalle where codigo_producto=:codigo_producto and codigo_carrito=:codigo_carrito";
+        public static function Deleteproducto($codigo_producto){
+            $query="DELETE from carrito_detalle where codigo_producto_c=:codigo_producto_c and codigo_carrito=(SELECT MAX(codigo_carrito) from carrito);";
             $parameters=array(
-                "codigo_producto"=>$codigo_producto,
-                "codigo_carrito">=$codigo_carrito
+                "codigo_producto_c"=>$codigo_producto
             );
 
             return self::executeNonQuery($query, $parameters);
         }
 
         public static function getAllShopChart(){
-            $query="SELECT * FROM carrito as A
+            $query="SELECT A.codigo_carrito, A.codigo_usuario, A.fechaCreado, A.fechaExpira, A.estado, B.id, B.codigo_producto_c, B.cantidad, B.precio, C.nombre_producto, C.descripcion_producto, C.codigo_tipo_producto, C.codigo_categoria, C.uri_img, C.cantidad_stock , truncate((B.cantidad*B.precio),2) as subtotal FROM carrito as A
             join carrito_detalle as B
-            join productos as C on B.codigo_producto_c= C.codigo_producto ";
+            join productos as C on B.codigo_producto_c= C.codigo_producto  ";
                     return self::obtenerRegistros($query, array());
         }
 
@@ -85,7 +84,21 @@
             $parameters=array(
                 "codigo_producto"=>$codigo_producto
             );
-            self::obtenerUnRegistro($query, $parameters);
+            return self::obtenerUnRegistro($query, $parameters);
+        }
+        public static function CarritoItems(){
+            $query="SELECT count(B.codigo_producto_c) as count FROM carolina_jewerly_db.carrito as A
+            join carrito_detalle as B on A.codigo_carrito=B.codigo_carrito;";
+            return self::obtenerUnRegistro($query, array());
+        }
+
+        public static function CheckStock($cantidad, $codigo_producto){
+            $query="SELECT  if( :cantidad >cantidad_stock , 'false' , 'true' )  FROM carolina_jewerly_db.productos where codigo_producto=:codigo_producto;";
+            $parameters=array(
+                "cantidad"=>$cantidad,
+                "codigo_producto"=>$codigo_producto
+            );
+            return self::obtenerUnRegistro($query, $parameters);
         }
 
         public static function StockProductoReduce($codigo_producto, $cantidad){
