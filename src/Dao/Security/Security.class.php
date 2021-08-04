@@ -133,6 +133,18 @@ class Security extends \Dao\Table
         );
     }
 
+    static public function getAllFeature()
+    {
+        $sqlstr = "SELECT * from funciones;";
+        
+        return  self::obtenerRegistros($sqlstr, array());
+    }
+    static public function getAllFuncionesRoles()
+    {
+        $sqlstr = "SELECT * from funciones_roles;";
+        
+        return  self::obtenerRegistros($sqlstr, array());
+    }
     static public function getFeature($fncod)
     {
         $sqlstr = "SELECT * from funciones where codigo_funcion=:codigo_funcion;";

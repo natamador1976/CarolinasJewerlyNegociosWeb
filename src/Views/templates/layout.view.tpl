@@ -29,9 +29,7 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="index.php?page=index">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Conocenos</a>
-        </li>
+       >
         <li class="nav-item">
           <a class="nav-link" href="index.php?page=mnt_carrito"><i class="fas fa-shopping-cart"></i> 
          <span class="badge badge-dark text-dark">{{CARKEY}}</span>
@@ -42,9 +40,9 @@
             Productos
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Maquillaje</a></li>
-            <li><a class="dropdown-item" href="#">Cabello</a></li>
-            <li><a class="dropdown-item" href="#">Cuidado Personal</a></li>
+            <li><a class="dropdown-item" href="index.php?page=mnt_catalogo&mode=1">Maquillaje</a></li>
+            <li><a class="dropdown-item" href="index.php?page=mnt_catalogo&mode=2">Cabello</a></li>
+            <li><a class="dropdown-item" href="index.php?page=mnt_catalogo&mode=3">Cuidado Personal</a></li>
             
           </ul>
         </li>

@@ -62,7 +62,11 @@ class Catalogo extends PublicController{
                     $registros["precio"]=$_POST["precio"]
                 );
                 if($Cart && $Detail){
-                 echo '<script>alert("Se Inserto a la carretilla")</script>';
+                 
+                 \Utilities\Site::redirectToWithMsg(
+                    "index.php?page=mnt_carrito",
+                    "Categoria eliminada exitosamente :)"
+                );
              }
  
             } else{
@@ -72,7 +76,10 @@ class Catalogo extends PublicController{
                  $registros["precio"]=isset($_POST["precio"])?$_POST["precio"]:0
              );
              if($Detail){
-                 echo '<script>alert("Se Inserto a la carretilla")</script>';
+                \Utilities\Site::redirectToWithMsg(
+                    "index.php?page=mnt_carrito",
+                    "Categoria eliminada exitosamente :)"
+                );
              }
             }
 

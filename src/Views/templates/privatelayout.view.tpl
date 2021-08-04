@@ -35,9 +35,7 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="index.php?page=index">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Conocenos</a>
-        </li>
+        
         <li class="nav-item">
           <a class="nav-link" href="index.php?page=mnt_carrito"><i class="fas fa-shopping-cart"></i> 
          <span class="badge badge-dark text-dark">{{CARKEY}}</span>
@@ -78,7 +76,7 @@
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
            <li><a class="dropdown-item" href="index.php?page=mnt_productos">Usuarios</a></li>
             <li><a class="dropdown-item" href="index.php?page=mnt_roles">Roles</a></li>
-            <li><a class="dropdown-item" href="#">Permisos</a></li>
+            <li><a class="dropdown-item" href="index.php?page=sec_permisos">Permisos</a></li>
             
           </ul>
         </li>
