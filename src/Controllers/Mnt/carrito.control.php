@@ -36,7 +36,9 @@ class carrito extends PublicController{
                     echo '<script>alert("Se elimino de la carretilla")</script>';
                 }
             }
+
             $data["PAYPAL_CLIENT_ID"]= \Utilities\Context::getContextByKey("PAYPAL_CLIENT_ID");
+
 
         \Views\Renderer::render("mnt\carrito", $data);
         

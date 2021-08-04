@@ -7,9 +7,30 @@ class Catalogo extends PublicController{
     public function run():void{
         $data=array();
         $data["productos"]=array();
-        $tmp=\Dao\productos::getAllProductos();
-        foreach($tmp as $items){
-            $data["productos"][]=$items;
+        $data["mode"]=isset($_GET["mode"])?$_GET["mode"]:0;
+        
+        switch($data["mode"]){
+            case 1: 
+                $codigo_categoria=1;
+                   $tmp=\Dao\productos::getAllProductos($codigo_categoria);
+                   foreach($tmp as $items){
+                    $data["productos"][]=$items;
+                }
+                    break; 
+            case 2: 
+                $codigo_categoria=2;
+                   $tmp=\Dao\productos::getAllProductos($codigo_categoria);
+                   foreach($tmp as $items){
+                    $data["productos"][]=$items;
+                }
+                    break; 
+            case 3:
+                $codigo_categoria=3;
+                   $tmp=\Dao\productos::getAllProductos($codigo_categoria);
+                   foreach($tmp as $items){
+                    $data["productos"][]=$items;
+                }
+                    break; 
         }
 
         $time=time();
@@ -54,6 +75,9 @@ class Catalogo extends PublicController{
                  echo '<script>alert("Se Inserto a la carretilla")</script>';
              }
             }
+
+           
+
             /*if($data["cantidad_stock"]==10){
                 echo "<script> alert(Se pudo)</script>";
             }

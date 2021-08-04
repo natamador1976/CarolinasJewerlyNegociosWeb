@@ -10,7 +10,7 @@ class productos extends \Controllers\PrivateController{
         $data["CanUpdate"]=self::isFeatureAutorized("Controllers\Mnt\Productos\Upd");
         $data["CanDelete"]=self::isFeatureAutorized("Controllers\Mnt\Productos\Del");
         $data["CanView"]=self::isFeatureAutorized("Controllers\Mnt\Productos\View");
-        $tmp=\Dao\productos::getAllProductos();
+        $tmp=\Dao\productos::getProductos();
         $data["productos"]=array();
        
         foreach($tmp as $tmpitems){

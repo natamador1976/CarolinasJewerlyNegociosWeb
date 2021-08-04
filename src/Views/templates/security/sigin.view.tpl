@@ -2,9 +2,9 @@
   <form class="border mt-4 bg-light rounded shadow-lg "style="width:400px; height:400px;" method="post" action="index.php?page=sec_register">
 
       <h1 class="text-center mt-4">Crea tu cuenta</h1>   
-      <div class="d-flex justify-content-center flex-column">
-      <div class="form-group col-sm-6 d-flex justify-content-center flex-column">
-        <label class="text-center" for="txtEmail">Correo Electrónico</label>
+      <div class="d-flex justify-content-center flex-column m-4">
+      <div class="  d-flex justify-content-center flex-column">
+        <label class="text-center mt-2" for="txtEmail">Correo Electrónico</label>
         <div class="d-flex justify-content-center">
           <input class="form-control " type="email" id="txtEmail" name="txtEmail" value="{{txtEmail}}" />
         </div>
@@ -13,8 +13,8 @@
         {{endif errorEmail}}
       </div>
 
-      <div class="form-group col-sm-6">
-        <label class="text-center" for="txtPswd">Contraseña</label>
+      <div class="d-flex justify-content-center flex-column ">
+        <label class="text-center mt-2" for="txtPswd">Contraseña</label>
         <div class="d-flex justify-content-center">
           <input class="form-control" type="password" id="txtPswd" name="txtPswd" value="{{txtPswd}}" />
         </div>

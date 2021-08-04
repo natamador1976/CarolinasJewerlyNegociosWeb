@@ -107,7 +107,16 @@
                 "cantidad_stock"=>$cantidad,
                 "codigo_producto"=>$codigo_producto
             ); 
-            self::executeNonQuery($query, $parameters);
+            return self::executeNonQuery($query, $parameters);
+        }
+
+        public static function CarritoPaypal(){
+            $query="SELECT C.nombre_producto, C.descripcion_producto,C.codigo_producto, C.precio,15,B.cantidad, D.nombre_categoria FROM carolina_jewerly_db.carrito as A
+            join carrito_detalle as B on A.codigo_carrito=B.codigo_carrito 
+            join productos as C on C.codigo_producto= B.codigo_producto_c
+            join categorias as D on D.codigo_categoria= C.codigo_categoria
+            where A.codigo_carrito=(select max(codigo_carrito) from carrito) and A.estado='ACT';";
+            return self::obtenerRegistros($query, array());
         }
 
 

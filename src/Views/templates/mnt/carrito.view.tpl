@@ -50,7 +50,7 @@
         
         <div class="card" style="width: 400px;">
             <h2 class="text-center m-3"> Pago</h2>
-            <form action="" method="POST">
+            <form action="index.php?page=Checkout_Checkout" method="POST">
                <div class="m-3">
                     <label for="txtSubtotal">Subtotal</label>
                     <input class="m-2 " type="text" value="{{suma}}" readonly disabled/>
@@ -66,22 +66,23 @@
                <div >
                    <h3 class="text-center">Método de Pago</h3>
                    <div class="d-flex justify-content-center ">
-                      <div id="btnPagar">
-
-                      </div>
+                     
+                          <button type="submit" name="btnPagar"  id="btnPagar" class="btn btn-outline-warning w-25 mt-3 mb-3">Pagar</button>
+                    
                    </div>
                </div>
-               <form action="index.php?page=mnt_carrito">
-               <div class="d-flex justify-content-center ">
-                   
-               </div>
-               </form>
+              
             </form>
-            
+              
         </div>
     </div>
-    <script src="https://www.paypal.com/sdk/js?client-id={{PAYPAL_CLIENT_ID}}"></script>
-        <script>paypal.Buttons({
+  
+</section>
+<!-- <button type="submit" name="btnPagar"  id="btnPagar" class="btn btn-outline-warning w-25 mt-3 mb-3">Pagar</button>-->
+<!--<script src="https://www.paypal.com/sdk/js?client-id={{PAYPAL_CLIENT_ID}}"></script>
+        <script>paypal.Buttons().render('#btnPagar');</script>
+    
+    <script>paypal.Buttons({
     createOrder:function(data,actions){
         return actions.order.create({
             purchase_units:[{
@@ -93,13 +94,6 @@
     },
     onApprove:function(data, actions){
         return actions.order.capture().then(function(details){
-            console.log(details);
-            window.location.replace('http://localhost/nw/CarolinasJewerlyNegociosWeb/index.php?page=paypal_accept');
-        });
-    },
-    onCancel:function(data){
-         window.location.replace('http://localhost/nw/CarolinasJewerlyNegociosWeb/index.php?page=paypal_cancel');
+            console.log(details);});
     }
-}).render('#btnPagar');</script>
-</section>
-<!-- <button type="submit" name="btnPagar"  id="btnPagar" class="btn btn-outline-warning w-25 mt-3 mb-3">Pagar</button>-->
+}).render('#btnPagar');</script> -->

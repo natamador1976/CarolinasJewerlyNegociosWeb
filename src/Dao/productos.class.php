@@ -1,7 +1,11 @@
 <?php
     namespace Dao;
     class productos extends Table{
-        public static function getAllProductos(){
+        public static function getAllProductos($codigo_categoria){
+            $query="SELECT * FROM productos where codigo_categoria=:codigo_categoria;";
+            return self::obtenerRegistros($query, array("codigo_categoria"=>$codigo_categoria));
+        }
+        public static function getProductos(){
             $query="SELECT * FROM productos;";
             return self::obtenerRegistros($query, array());
         }
