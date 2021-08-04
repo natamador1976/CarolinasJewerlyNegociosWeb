@@ -65,9 +65,8 @@ class Catalogo extends PublicController{
         
 
         }
-        if(isset($_POST["btnPaypal"])){
-
-        }
+     
+   
         
         \Views\Renderer::render("mnt/productoclient",$data);
     }

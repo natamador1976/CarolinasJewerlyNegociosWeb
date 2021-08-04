@@ -1,4 +1,5 @@
 <h1 > <span><i class="fas fa-shopping-cart"></i> </span> Carrito de Compras</h1>
+<input type="hidden" name="token" value="{{carrito_xss_token}}"/>
 
 <section class="d-flex flex-row m-5 flex-wrap justify-content-around " style="height: 100vh;">
     
@@ -65,17 +66,40 @@
                <div >
                    <h3 class="text-center">Método de Pago</h3>
                    <div class="d-flex justify-content-center ">
-                      <input   type="radio" name="btnPaypal" id="btnPaypal"/><span class=""><i class="fab fa-cc-paypal " style="font-size:50px;"></i></span>
+                      <div id="btnPagar">
+
+                      </div>
                    </div>
                </div>
                <form action="index.php?page=mnt_carrito">
                <div class="d-flex justify-content-center ">
-                   <button type="submit" name="btnPagar"  id="btnPagar" class="btn btn-outline-warning w-25 mt-3 mb-3">Pagar</button>
+                   
                </div>
                </form>
             </form>
             
         </div>
     </div>
-
+    <script src="https://www.paypal.com/sdk/js?client-id={{PAYPAL_CLIENT_ID}}"></script>
+        <script>paypal.Buttons({
+    createOrder:function(data,actions){
+        return actions.order.create({
+            purchase_units:[{
+                amount:{
+                    value:'0.1'
+                }
+            }]
+        });
+    },
+    onApprove:function(data, actions){
+        return actions.order.capture().then(function(details){
+            console.log(details);
+            window.location.replace('http://localhost/nw/CarolinasJewerlyNegociosWeb/index.php?page=paypal_accept');
+        });
+    },
+    onCancel:function(data){
+         window.location.replace('http://localhost/nw/CarolinasJewerlyNegociosWeb/index.php?page=paypal_cancel');
+    }
+}).render('#btnPagar');</script>
 </section>
+<!-- <button type="submit" name="btnPagar"  id="btnPagar" class="btn btn-outline-warning w-25 mt-3 mb-3">Pagar</button>-->

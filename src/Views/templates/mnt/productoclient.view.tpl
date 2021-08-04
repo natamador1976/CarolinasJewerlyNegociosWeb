@@ -26,6 +26,7 @@
             </div>
             {{endfor productos}}
         </div>
+        
 </section>
 
 
