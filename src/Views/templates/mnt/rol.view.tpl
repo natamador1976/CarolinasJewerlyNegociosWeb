@@ -2,10 +2,10 @@
     <h1>{{ModalTitle}}</h1>
 </section>
 <section class="container-md d-flex justify-content-center"  style="width:100vh;">
-    <form action="index.php?page=mnt_rol" method="POST" class="col-12 col-m-8 offset-m-2">
+    <form action="index.php?page=mnt_rol" method="POST" class="border">
         <div class="m-5">
             <label for="codigo_rol" class="form-label">Código</label>
-            <input type="text" name="codigo_rol" id="codigo_rol" class="col-12 col-m-9" value="{{codigo_rol}}"/>
+            <input class="form-control"  type="text" name="codigo_rol" id="codigo_rol" placehoder="Código" value="{{codigo_rol}}" />
             <input type="hidden" name="mode" value="{{mode}}"/>
             <input type="hidden" name="codigo_rol" value="{{codigo_rol}}"/>
             <input type="hidden" name="token" value="{{roles_xss_token}}">

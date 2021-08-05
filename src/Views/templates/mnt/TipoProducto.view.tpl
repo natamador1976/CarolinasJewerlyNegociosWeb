@@ -3,10 +3,10 @@
 </section>
 
 <section class="container-md d-flex justify-content-center"  style="width:100vh;">
-    <form action="index.php?page=mnt_TipoProducto" method="POST" class="col-12 col-m-8 offset-m-2" >
+    <form action="index.php?page=mnt_TipoProducto" method="POST" class="border" >
     <div class="m-5">
         <label for="codigo_tipo_producto" class="form-label">Código</label>
-        <input type="text" class="form-control" name="codigo_tipo_producto" value="{{codigo_tipo_producto}}" id="codigo_tipo_producto"/>
+        <input type="text" readonly disabled class="form-control" name="codigo_tipo_producto" value="{{codigo_tipo_producto}}" id="codigo_tipo_producto"/>
         <input type="hidden" name="mode" value="{{mode}}"/>
         <input type="hidden" name="codigo_tipo_producto" value="{{codigo_tipo_producto}}" />
         <input type="hidden" name="token" value="{{tipo_p_xss_token}}"/>

@@ -1,6 +1,6 @@
 <h1>Empleados Registrados</h1>
-<section class="WWList container-m">
-<table>
+<section class="m-4">
+<table class="table table-info table-striped">
   <thead>
     <tr>
           <th>Cod</th>
@@ -15,7 +15,7 @@
           <th>Usuario</th>
        
          
-          <th><a href="index.php?page=mnt_Empleado&mode=INS" class="button">+</a></th>
+          <th><a href="index.php?page=mnt_Empleado&mode=INS" class="button"><i class="fas fa-plus"></i></a></th>
     </tr>
   </thead>
   <tbody>
@@ -32,9 +32,9 @@
       <td class="hidden-s">{{estado}}</td>
       <td class="hidden-s">{{cod_usuario}}</td>
       <td class="center">
-        <a href="index.php?page=mnt_Empleado&mode=UPD&id={{codigo_empleado}}">Editar</a>
+        <a href="index.php?page=mnt_Empleado&mode=UPD&id={{codigo_empleado}}"><i class="far fa-edit"></i></a>
         &nbsp;
-        <a href="index.php?page=mnt_Empleado&mode=DEL&id={{codigo_empleado}}">Eliminar</a>
+        <a href="index.php?page=mnt_Empleado&mode=DEL&id={{codigo_empleado}}"><i class="far fa-trash-alt"></i></a>
       </td>
     </tr>
     {{endfor empleados}}

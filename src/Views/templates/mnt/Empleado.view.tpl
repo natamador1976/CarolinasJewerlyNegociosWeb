@@ -19,7 +19,7 @@
     </div>
     <div class="m-5" >
       <label class="form-label" for="fecha_nacimiento">Nacimiento </label>
-      <input class="form-control" {{readonly}} type="" name="fecha_nacimiento" id="fecha_nacimiento" placehoder="" value="{{fecha_nacimiento}}" />
+      <input class="form-control" {{readonly}} type="date" name="fecha_nacimiento" id="fecha_nacimiento" placehoder="" value="{{fecha_nacimiento}}" />
     </div>
     <div class="m-5" >
       <label class="form-label" for="genero">Genero </label>
@@ -28,7 +28,7 @@
 
     <div class="m-5" >
       <label class="form-label" for="fecha_contrato">Fecha contrato</label>
-      <input class="form-control" {{readonly}} type="" name="fecha_contrato" id="fecha_contrato" placehoder="" value="{{fecha_contrato}}" />
+      <input class="form-control" {{readonly}} type="date" name="fecha_contrato" id="fecha_contrato" placehoder="" value="{{fecha_contrato}}" />
     </div>
       <div class="m-5" >
       <label class="form-label" for="foto_empleado">Foto</label>
