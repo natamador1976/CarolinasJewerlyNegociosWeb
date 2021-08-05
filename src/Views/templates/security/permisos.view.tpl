@@ -33,7 +33,7 @@
             <th>Código Función</th>
             <th>Función Rol Estado</th>
             <th>Fecha Expira</th>
-            <th><a href="index.php?page=mnt_funciones_roles&mode=INS" class="button"><i class="fas fa-plus"></i></a></th>
+            <th><a href="index.php?page=Sec_funcionesroles&mode=INS" class="button"><i class="fas fa-plus"></i></a></th>
         </tr>
     </thead>
     <tbody>
@@ -44,7 +44,7 @@
             <td>{{funcion_rol_estado}}</td>
             <td>{{fecha_exp}}</td>
             <td>
-                   <a href="index.php?page=mnt_funciones_roles&mode=UPD&id={{codigorol}}&id2={{codigo_funcion}}"><i class="far fa-edit"></i></a>
+                   <a href="index.php?page=Sec_funcionesroles&mode=UPD&id={{codigorol}}&id2={{codigo_funcion}}"><i class="far fa-edit"></i></a>
             </td>
         </tr>
         {{endfor funciones_roles}}

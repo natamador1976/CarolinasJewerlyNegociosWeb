@@ -23,6 +23,8 @@ usertipo    char(3)
 
 use Exception;
 
+use function Symfony\Component\DependencyInjection\Loader\Configurator\ref;
+
 class Security extends \Dao\Table
 {
     static public function newUsuario($email, $password)
@@ -132,6 +134,51 @@ class Security extends \Dao\Table
             "password_lastchange"     => "",
         );
     }
+    static public function insertFuncionesRoles($codigorol, $codigo_funcion, $funcion_rol_estado, $fecha_exp){
+        $query="INSERT INTO `carolina_jewerly_db`.`funciones_roles`
+        (`codigorol`,
+        `codigo_funcion`,
+        `funcion_rol_estado`,
+        `fecha_exp`)
+        VALUES
+        (
+        :codigorol,
+        :codigo_funcion,
+        :funcion_rol_estado,
+        :fecha_exp);";
+        $parameters=array(
+            "codigorol"=>$codigorol,
+            "codigo_funcion"=>$codigo_funcion,
+            "funcion_rol_estado"=>$funcion_rol_estado,
+            "fecha_exp"=>$fecha_exp
+        );
+
+        return self::executeNonQuery($query, $parameters);
+    }
+    static public function UpdateFuncionesRoles($codigorol, $codigo_funcion, $funcion_rol_estado, $fecha_exp){
+        $query="UPDATE `carolina_jewerly_db`.`funciones_roles`
+        SET
+        `funcion_rol_estado` =:funcion_rol_estado,
+        `fecha_exp` =:fecha_exp
+        WHERE `codigorol` =:codigorol AND `codigo_funcion` =:codigo_funcion;";
+        $parameters=array(
+            "funcion_rol_estado"=>$funcion_rol_estado,
+            "fecha_exp"=>$fecha_exp,
+            "codigorol"=>$codigorol,
+            "codigo_funcion"=>$codigo_funcion
+        );
+        return self::executeNonQuery($query, $parameters);    
+}
+
+static public function GetByIdPermisos($codigorol, $codigo_funcion){
+    $query="SELECT * from funciones_roles where codigorol=:codigorol and codigo_funcion=:codigo_funcion";
+    $parameters=array(
+        "codigorol"=>$codigorol,
+        "codigo_funcion"=>$codigo_funcion
+    );
+    return self::obtenerUnRegistro($query, $parameters);
+    
+}
 
     static public function getAllFeature()
     {
