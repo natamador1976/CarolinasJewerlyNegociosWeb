@@ -54,6 +54,7 @@ class Catalogo extends PublicController{
             
             $tmpProducto=\Dao\carrito::StockProduct($data["codigo_producto"]);
             $estado=\Dao\carrito::getCarritoId();
+            
             if($estado==null){
                 $Cart=\Dao\carrito::AddCart();
                 $Detail=\Dao\carrito::AddCartDetail(

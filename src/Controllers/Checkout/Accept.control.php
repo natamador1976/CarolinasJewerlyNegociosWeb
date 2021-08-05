@@ -13,6 +13,22 @@ class Accept extends PublicController{
         if ($token !== "" && $token == $session_token) {
             $result = \Utilities\Paypal\PayPalCapture::captureOrder($session_token);
             $dataview["orderjson"] = json_encode($result, JSON_PRETTY_PRINT);
+            $usuario=\Utilities\Security::getUserId();
+             $ok=\Dao\transacciones::insertTransaction($dataview["orderjson"], $usuario );
+             if($ok){
+                $codigo=\Dao\carrito::getCarritoId();
+                $ok1=\Dao\carrito::carrito_update($codigo["codigo_carrito"]);
+                 \Utilities\Site::redirectToWithMsg(
+                     "index.php?page=index",
+                     "Se Guardo Tu Orden"
+                 );
+                 
+
+             }
+
+           
+            
+            
         } else {
             $dataview["orderjson"] = "No Order Available!!!";
         }

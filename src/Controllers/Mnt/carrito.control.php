@@ -20,8 +20,8 @@ class carrito extends PublicController{
             }
             $data["suma"]=$suma;
             $data["isv"]=number_format($suma*0.15,2);
-            $data["total"]=number_format($data["suma"]+$data["isv"],2);
-            
+            $data["total"]=number_format(floatval($data["suma"])+floatval($data["isv"]),2);
+           
            
             $time=time();
             $token="carrito".$time;

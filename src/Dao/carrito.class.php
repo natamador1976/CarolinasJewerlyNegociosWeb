@@ -70,13 +70,14 @@
         public static function getAllShopChart(){
             $query="SELECT A.codigo_carrito, A.codigo_usuario, A.fechaCreado, A.fechaExpira, A.estado, B.id, B.codigo_producto_c, B.cantidad, B.precio, C.nombre_producto, C.descripcion_producto, C.codigo_tipo_producto, C.codigo_categoria, C.uri_img, C.cantidad_stock , truncate((B.cantidad*B.precio),2) as subtotal FROM carrito as A
             join carrito_detalle as B
-            join productos as C on B.codigo_producto_c= C.codigo_producto  ";
+            join productos as C on B.codigo_producto_c= C.codigo_producto
+            where A.estado='ACT'  ;";
                     return self::obtenerRegistros($query, array());
         }
 
         public static function getCarritoId(){
             $query="SELECT max(codigo_carrito) as codigo_carrito from carrito where estado='ACT';";
-            return self::obtenerRegistros($query, array());
+            return self::obtenerUnRegistro($query, array());
         }
 
         public static function StockProduct($codigo_producto){
@@ -88,7 +89,8 @@
         }
         public static function CarritoItems(){
             $query="SELECT count(B.codigo_producto_c) as count FROM carolina_jewerly_db.carrito as A
-            join carrito_detalle as B on A.codigo_carrito=B.codigo_carrito;";
+            join carrito_detalle as B on A.codigo_carrito=B.codigo_carrito
+            where A.estado='ACT';";
             return self::obtenerUnRegistro($query, array());
         }
 
@@ -109,9 +111,14 @@
             ); 
             return self::executeNonQuery($query, $parameters);
         }
+        public static function carrito_update($codigo_carrito){
+            $query="UPDATE carrito SET estado = 'INA' WHERE (`codigo_carrito` = :codigo_carrito);";
+            
+            return self::executeNonQuery($query ,array("codigo_carrito"=>$codigo_carrito));
+        }
 
         public static function CarritoPaypal(){
-            $query="SELECT C.nombre_producto, C.descripcion_producto,C.codigo_producto, C.precio,15,B.cantidad, D.nombre_categoria FROM carolina_jewerly_db.carrito as A
+            $query="SELECT C.nombre_producto, C.descripcion_producto,C.codigo_producto, C.precio,B.cantidad, D.nombre_categoria FROM carolina_jewerly_db.carrito as A
             join carrito_detalle as B on A.codigo_carrito=B.codigo_carrito 
             join productos as C on C.codigo_producto= B.codigo_producto_c
             join categorias as D on D.codigo_categoria= C.codigo_categoria

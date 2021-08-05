@@ -50,7 +50,7 @@
         
         <div class="card" style="width: 400px;">
             <h2 class="text-center m-3"> Pago</h2>
-            <form action="index.php?page=Checkout_Checkout" method="POST">
+            <form action="index.php?page=checkout_checkout" method="POST">
                <div class="m-3">
                     <label for="txtSubtotal">Subtotal</label>
                     <input class="m-2 " type="text" value="{{suma}}" readonly disabled/>
