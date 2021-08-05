@@ -3,7 +3,7 @@
 </section>
 
 <section class="container-md d-flex justify-content-center"  style="width:100vh;">
-    <form action="index.php?page=mnt_TipoProducto" method="POST" class="border" >
+    <form action="index.php?page=mnt_TipoProducto" method="POST" class="border  w-75 p-3" >
     <div class="m-5">
         <label for="codigo_tipo_producto" class="form-label">Código</label>
         <input type="text" readonly disabled class="form-control" name="codigo_tipo_producto" value="{{codigo_tipo_producto}}" id="codigo_tipo_producto"/>

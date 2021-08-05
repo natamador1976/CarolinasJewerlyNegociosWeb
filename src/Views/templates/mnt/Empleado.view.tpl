@@ -2,10 +2,10 @@
   <h1>{{ModalTitle}}</h1>
 </section>
 <section class="container-md d-flex justify-content-center"  style="width:100vh;">
-  <form action="index.php?page=mnt_Empleado" method="POST" class="border ">
+  <form action="index.php?page=mnt_Empleado" method="POST" class="border  w-75 p-3">
     <div class="m-5" >
       <label class="form-label" for="codigo_empleado">Código</label>
-      <input class="col-12 col-m-9" readonly disabled type="text" name="codigo_empleado" id="codigo_empleado" placehoder="Código" value="{{codigo_empleado}}" />
+      <input class="form-control" readonly disabled type="text" name="codigo_empleado" id="codigo_empleado" placehoder="Código" value="{{codigo_empleado}}" />
       <input type="hidden" name="mode" value="{{mode}}" />
       <input type="hidden" name="codigo_empleado" value="{{codigo_empleado}}" />
     </div>
@@ -21,9 +21,12 @@
       <label class="form-label" for="fecha_nacimiento">Nacimiento </label>
       <input class="form-control" {{readonly}} type="date" name="fecha_nacimiento" id="fecha_nacimiento" placehoder="" value="{{fecha_nacimiento}}" />
     </div>
-    <div class="m-5" >
-      <label class="form-label" for="genero">Genero </label>
-      <input class="form-control" {{readonly}} type="" name="genero" id="genero" placehoder="" value="{{genero}}" />
+    <div class="m-5">
+      <label class="form-label" for="estado">Género</label>
+      <select name="genero" id="genero" class="form-select" {{if readonly}} readonly disabled {{endif readonly}}>
+        <option value="F" {{if estado}}selected{{endif estado}}>FEMENINO</option>
+        <option value="M" {{if estado}}selected{{endif estado}}>MASCULINO</option>
+      </select>
     </div>
 
     <div class="m-5" >
@@ -32,7 +35,7 @@
     </div>
       <div class="m-5" >
       <label class="form-label" for="foto_empleado">Foto</label>
-      <input class="form-control" {{readonly}} type="" name="foto_empleado" id="foto_empleado" placehoder="" value="{{foto_empleado}}" />
+      <input class="form-control" {{readonly}} type="file" name="foto_empleado" id="foto_empleado" placehoder="" value="{{foto_empleado}}" />
     </div>
 
      <div class="m-5" >

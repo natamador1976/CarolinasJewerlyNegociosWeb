@@ -2,7 +2,7 @@
     <h1>{{ModalTitle}}</h1>
 </section>
 <section class="container-md d-flex justify-content-center"  style="width:100vh;">
-    <form action="index.php?page=mnt_producto" method="POST" class="border " enctype="multipart/form-data">
+    <form action="index.php?page=mnt_producto" method="POST" class="border  w-75 p-3" enctype="multipart/form-data">
         <div class="m-5">
             <label for="codigo_producto" class="form-label">Código</label>
             <input class="form-control" type="text" name="codigo_producto" id="codigo_producto" value="{{codigo_producto}}"readonly disabled />

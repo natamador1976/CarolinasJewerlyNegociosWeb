@@ -2,7 +2,7 @@
   <h1>{{ModalTitle}}</h1>
 </section>
 <section class="container-md d-flex justify-content-center"  style="width:100vh;">
-  <form action="index.php?page=mnt_user" method="POST" class="border">
+  <form action="index.php?page=mnt_user" method="POST" class="border  w-75 p-3">
     <div class="m-5">
       <label class="form-label" for="prdcod">Código</label>
       <input class="form-control"  readonly disabled type="text" name="codigo_usuario" id="codigo_usuario" placehoder="Código" value="{{codigo_usuario}}" />
@@ -33,8 +33,8 @@
      <div class="m-5">
       <label class="form-label" for="estado">Estado</label>
       <select name="estado" id="Estado" class="form-select" {{if readonly}} readonly disabled {{endif readonly}}>
-        <option value="ACT" {{if estado}}selected{{endif estado}}>ACT</option>
-        <option value="INA" {{if estado}}selected{{endif estado}}>INA</option>
+        <option value="ACT" {{if estado}}selected{{endif estado}}>ACTIVO</option>
+        <option value="INA" {{if estado}}selected{{endif estado}}>INACTIVO</option>
       </select>
     </div>
     <div class="m-5">

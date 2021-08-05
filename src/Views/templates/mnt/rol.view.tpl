@@ -2,7 +2,7 @@
     <h1>{{ModalTitle}}</h1>
 </section>
 <section class="container-md d-flex justify-content-center"  style="width:100vh;">
-    <form action="index.php?page=mnt_rol" method="POST" class="border">
+    <form action="index.php?page=mnt_rol" method="POST" class="border w-75 p-3">
         <div class="m-5">
             <label for="codigo_rol" class="form-label">Código</label>
             <input class="form-control"  type="text" name="codigo_rol" id="codigo_rol" placehoder="Código" value="{{codigo_rol}}" />

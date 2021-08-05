@@ -22,7 +22,7 @@
     {{foreach empleados}}
     <tr>
       <td>{{codigo_empleado}}</td>
-      <td><a href="index.php?page=mnt_user&mode=DSP&id={{codigo_empleado}}">{{num_identidad}}</a></td>
+      <td><a href="index.php?page=mnt_Empleado&mode=DSP&id={{codigo_empleado}}">{{num_identidad}}</a></td>
       <td class="hidden-s">{{nombre_empleado}}</td>
       <td class="hidden-s">{{fecha_nacimiento}}</td>
       <td class="hidden-s">{{genero}}</td>
