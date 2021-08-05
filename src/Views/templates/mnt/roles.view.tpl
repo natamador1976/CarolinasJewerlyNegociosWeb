@@ -14,7 +14,7 @@
             <tr>
                 <td>{{codigo_rol}}</td>
                 <td>
-                <a href="index.php?page=mnt_rol&mode=DSP&id={{desripcion_rol}}">{{descripcion_rol}}</a>
+                <a href="index.php?page=mnt_rol&mode=DSP&id={{codigo_rol}}">{{descripcion_rol}}</a>
                 </td>
                 <td>{{estado}}</td>
                 <td>

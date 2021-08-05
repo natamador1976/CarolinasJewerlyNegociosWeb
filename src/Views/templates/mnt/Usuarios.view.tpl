@@ -1,6 +1,6 @@
 <h1>Usuarios Registrados</h1>
-<section class="WWList container-m">
-<table>
+<section class="m-3">
+<table class="table table-info table-striped">
   <thead>
     <tr>
           <th>Cod</th>
