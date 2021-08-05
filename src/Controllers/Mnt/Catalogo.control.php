@@ -2,10 +2,11 @@
     namespace Controllers\Mnt;
 
 use Controllers\PublicController;
-
+$pruebita=0;
 class Catalogo extends PublicController{
     public function run():void{
         $data=array();
+      
         $data["productos"]=array();
         $data["mode"]=isset($_GET["mode"])?$_GET["mode"]:0;
         
@@ -51,11 +52,24 @@ class Catalogo extends PublicController{
             $data["cantidad"]=isset($_POST["cantidad"])?$_POST["cantidad"]:0;
             $data["precio"]=$_POST["precio"];
             $data["cantidad_stock"]=$_POST["cantidad_stock"];
-            
+           
+
+            if($data["cantidad"]>$data["cantidad_stock"]){
+                //echo "<script> alert(No Se pudo)</script>";
+                \Utilities\Site::redirectToWithMsg(
+                    "index.php?page=mnt_catalogo&mode=1",
+                    "Cantidad de productos inexistente!! :´c"
+                );
+
+            } else {
             $tmpProducto=\Dao\carrito::StockProduct($data["codigo_producto"]);
+            $cantidad=\Dao\carrito::StockProductoReduce($data["codigo_producto"], $data["cantidad"]);
             $estado=\Dao\carrito::getCarritoId();
+             
+              
             
-            if($estado==null){
+        
+            if($estado["codigo_carrito"]==null){
                 $Cart=\Dao\carrito::AddCart();
                 $Detail=\Dao\carrito::AddCartDetail(
                     $registros["codigo_producto"]=$data["codigo_producto"],
@@ -66,7 +80,7 @@ class Catalogo extends PublicController{
                  
                  \Utilities\Site::redirectToWithMsg(
                     "index.php?page=mnt_carrito",
-                    "Categoria eliminada exitosamente :)"
+                    "Se añadio a la carretilla exitosamente :)"
                 );
              }
  
@@ -79,28 +93,19 @@ class Catalogo extends PublicController{
              if($Detail){
                 \Utilities\Site::redirectToWithMsg(
                     "index.php?page=mnt_carrito",
-                    "Categoria eliminada exitosamente :)"
+                    "Se añadio a la carretilla exitosamente :)"
                 );
              }
             }
-
-           
-
-            /*if($data["cantidad_stock"]==10){
-                echo "<script> alert(Se pudo)</script>";
-            }
-           
-            if($data["cantidad_stock"]>$data["cantidad"]){
-                echo "<script> alert(Se pudo)</script>";
-            }*/
-
-        
-
+        }
         }
      
    
         
         \Views\Renderer::render("mnt/productoclient",$data);
     }
+
+     
 }
+
 ?>
