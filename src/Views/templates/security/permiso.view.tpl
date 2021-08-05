@@ -50,3 +50,15 @@
     
 
 </section>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", ()=>{
+    const btnCancelar = document.getElementById("btnCancelar");
+    btnCancelar.addEventListener("click", (e)=>{
+      e.preventDefault();
+      e.stopPropagation();
+      window.location.assign("index.php?page=sec_permisos");
+    });
+  });
+</script>
