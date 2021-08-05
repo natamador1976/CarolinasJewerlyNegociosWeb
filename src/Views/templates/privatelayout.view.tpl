@@ -74,7 +74,7 @@
             Acceso
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-           <li><a class="dropdown-item" href="index.php?page=mnt_productos">Usuarios</a></li>
+           <li><a class="dropdown-item" href="index.php?page=mnt_users">Usuarios</a></li>
             <li><a class="dropdown-item" href="index.php?page=mnt_roles">Roles</a></li>
             <li><a class="dropdown-item" href="index.php?page=sec_permisos">Permisos</a></li>
             
